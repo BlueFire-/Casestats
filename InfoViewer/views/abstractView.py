@@ -3,11 +3,11 @@ import abc
 
 class AbstractView(object):
 
-    @abc.abstractmethod
-    def getDocs(self) -> str:
+    @abc.abstractstaticmethod
+    def getDocs(self=None) -> dict:
         """
-        :rtype: str
-        :return: The documentation of possible config parameter
+        :rtype: dict
+        :return: The documentation of possible config parameter in format {<parName>: <explanation of parameter>}
         """
         return
 
