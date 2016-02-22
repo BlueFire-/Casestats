@@ -1,11 +1,11 @@
-# This ugly workaround is just so the IDE is satisfied and autocompletion works
 
+# This ugly workaround is just so the IDE is satisfied and autocompletion works
 if __name__ == "__main__":
-    from views.abstractView import AbstractView
+    from infoViewerForm import InfoViewerApp
     import ViewLoader
     import ConfigParser
 else:
-    from .views.abstractView import AbstractView
+    from .infoViewerForm import InfoViewerApp
 
 config = ConfigParser.getViewConfig()
 
@@ -13,9 +13,6 @@ ViewLoader.loadViews()
 
 ViewLoader.validateConfig(config)
 
-#for view in ViewLoader.classList:
-#    curView = view()
-#    assert isinstance(curView, AbstractView)
-#    print(view.getName())
-
+InfoApp = InfoViewerApp(config)
+InfoApp.run()
 

@@ -3,16 +3,20 @@ from xml.etree.ElementTree import Element
 import os.path
 
 viewConfig = "ViewConfig.xml"
+prefix = "{http://www.w3schools.com}"
 
 def getViewConfig() -> list:
     if not os.path.exists(viewConfig):
         raise FileNotFoundError(viewConfig + " not found")
     resultList = []
     parentNode = ElementTree.parse(viewConfig).getroot()
-    for node in parentNode.findall('widget'):
+    assert isinstance(parentNode, Element)
+    ab = list(parentNode)
+    for node in list(parentNode):
         assert isinstance(node, Element)
-        curList = [node.find("name").text, __ElementToDictionary(node.find("attributes"))]
-        resultList.append(curList)
+        if node.tag == prefix + 'widget':
+            curList = [node.find(prefix + "name").text, __ElementToDictionary(node.find(prefix + "attributes"))]
+            resultList.append(curList)
     return resultList
 
 
@@ -23,5 +27,5 @@ def __ElementToDictionary(element) -> dict:
     resultDict = {}
     for node in list(element):
         assert isinstance(node, Element)
-        resultDict[node.tag] = node.text
+        resultDict[node.tag[len(prefix):]] = node.text
     return resultDict

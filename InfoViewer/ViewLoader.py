@@ -63,3 +63,11 @@ def validateConfig(config) -> bool:
             if not keyExists:
                 raise ValueError("The Attribute '" + curKey + "' is unknown in Widget '" + name + "'")
 
+
+def getView(name) -> AbstractView:
+    clazz = None
+    for curClazz in classList:
+        if curClazz.getName() == name:
+            return curClazz()
+
+    return None

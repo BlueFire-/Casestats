@@ -5,6 +5,8 @@ class AbstractView(object):
 
     @abc.abstractstaticmethod
     def getDocs(self=None) -> dict:
+        # TODO: Add a default Doc for standard values
+        # Suggestions: max_width, max_height, name, relx, rely
         """
         :rtype: dict
         :return: The documentation of possible config parameter in format {<parName>: <explanation of parameter>}

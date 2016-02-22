@@ -6,14 +6,21 @@ xsi:schemaLocation="http://www.w3schools.com ./ViewConfig.xsd">
     <widget>
         <name>CPULoad</name>
         <attributes>
-            <relx>5</relx>
-
+            <name>CPU#1</name>
         </attributes>
     </widget>
     <widget>
         <name>CPULoad</name>
         <attributes>
             <relx>10</relx>
+            <name>CPU#2</name>
+        </attributes>
+    </widget>
+    <widget>
+        <name>CPULoad</name>
+        <attributes>
+            <rely>10</rely>
+            <name>CPU#3</name>
         </attributes>
     </widget>
 </window>
